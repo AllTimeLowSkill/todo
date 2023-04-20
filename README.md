@@ -1,7 +1,8 @@
 # todo
-Start with Docker:
-  1. Запустить команду docker-compose build
-  2. запустить команду docker-compose up
+Запуск с помощью Docker:
+  1. Выполнить команду docker-compose build
+  2. Выполнить команду docker-compose up
+  3. Перейти в браузере на http://localhost:3000
   
 Запуск без Docker:
   1. Сервера
