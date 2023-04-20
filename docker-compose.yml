@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    command: npm run dev
+    env_file:
+      - ./backend/.env
+    environment:
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - 3000:3000
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    env_file:
+      - ./backend/.env
+    environment:
+      PG_DATA: /var/lib/postgresql/data
+      POSTGRES_DB: todo
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
